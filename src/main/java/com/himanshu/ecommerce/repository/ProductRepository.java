@@ -1,4 +1,7 @@
 package com.himanshu.ecommerce.repository;
 
-public class ProductRepository {
+import com.himanshu.ecommerce.model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProductRepository extends JpaRepository<Product, Long> {
 }
