@@ -1,5 +1,6 @@
 package com.himanshu.ecommerce.service;
 
+import com.himanshu.ecommerce.model.Product;
 import com.himanshu.ecommerce.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,5 +11,9 @@ public class ProductService {
 
     public ProductService(ProductRepository productRepository){
         this.productRepository = productRepository;
+    }
+
+    public Product createProduct(Product product) {
+        return productRepository.save(product);
     }
 }
