@@ -1,6 +1,7 @@
 package com.himanshu.ecommerce.controller;
 
-import com.himanshu.ecommerce.model.Product;
+import com.himanshu.ecommerce.dto.ProductRequest;
+import com.himanshu.ecommerce.dto.ProductResponse;
 import com.himanshu.ecommerce.service.ProductService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product createProduct(@RequestBody Product product){
-        return productService.createProduct(product);
+    public ProductResponse createProduct(@RequestBody ProductRequest productRequest){
+        return productService.createProduct(productRequest);
     }
 }
