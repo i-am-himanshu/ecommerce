@@ -6,6 +6,8 @@ import com.himanshu.ecommerce.model.Product;
 import com.himanshu.ecommerce.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductService {
 
@@ -26,14 +28,26 @@ public class ProductService {
 
         Product savedProduct = productRepository.save(product);
 
+        return mapToProductResponse(savedProduct);
+    }
+
+    private ProductResponse mapToProductResponse(Product product) {
+
         ProductResponse productResponse = new ProductResponse();
 
-        productResponse.setId(savedProduct.getId());
-        productResponse.setName(savedProduct.getName());
-        productResponse.setDescription(savedProduct.getDescription());
-        productResponse.setPrice(savedProduct.getPrice());
-        productResponse.setStockQuantity(savedProduct.getStockQuantity());
+        productResponse.setId(product.getId());
+        productResponse.setName(product.getName());
+        productResponse.setDescription(product.getDescription());
+        productResponse.setPrice(product.getPrice());
+        productResponse.setStockQuantity(product.getStockQuantity());
 
         return productResponse;
+    }
+
+    public List<ProductResponse> getAllProducts() {
+        return productRepository.findAll()
+                .stream()
+                .map(this::mapToProductResponse)
+                .toList();
     }
 }
