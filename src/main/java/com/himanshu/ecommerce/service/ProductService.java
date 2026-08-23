@@ -50,4 +50,12 @@ public class ProductService {
                 .map(this::mapToProductResponse)
                 .toList();
     }
+
+    public ProductResponse getProductById(Long id) {
+
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found."));
+
+        return mapToProductResponse(product);
+    }
 }
