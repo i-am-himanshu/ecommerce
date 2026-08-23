@@ -58,4 +58,13 @@ public class ProductService {
 
         return mapToProductResponse(product);
     }
+
+    public void deleteProductById(Long id) {
+
+        if(!productRepository.existsById(id)) {
+            throw new RuntimeException("Product not found.");
+        }
+
+        productRepository.deleteById(id);
+    }
 }
