@@ -67,4 +67,19 @@ public class ProductService {
 
         productRepository.deleteById(id);
     }
+
+    public ProductResponse updateProductById(Long id, ProductRequest productRequest) {
+
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found."));
+
+        product.setName(productRequest.getName());
+        product.setDescription(productRequest.getDescription());
+        product.setPrice(productRequest.getPrice());
+        product.setStockQuantity(productRequest.getStockQuantity());
+
+        Product updatedProduct = productRepository.save(product);
+
+        return mapToProductResponse(updatedProduct);
+    }
 }
