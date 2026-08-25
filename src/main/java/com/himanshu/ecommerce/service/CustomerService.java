@@ -15,12 +15,14 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    
+
 
     public CustomerResponse createCustomer(CustomerRequest customerRequest) {
         Customer customer = new Customer();
 
         customer.setName(customerRequest.getName());
-        customer.setEmail(customer.getEmail());
+        customer.setEmail(customerRequest.getEmail());
 
         Customer savedCustomer = customerRepository.save(customer);
 
