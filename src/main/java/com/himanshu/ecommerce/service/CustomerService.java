@@ -15,7 +15,16 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    
+    private CustomerResponse mapToCustomerResponse(Customer customer){
+
+        CustomerResponse customerResponse = new CustomerResponse();
+
+        customerResponse.setId(customer.getId());
+        customerResponse.setName(customer.getName());
+        customerResponse.setEmail(customer.getEmail());
+
+        return  customerResponse;
+    }
 
 
     public CustomerResponse createCustomer(CustomerRequest customerRequest) {
@@ -26,12 +35,6 @@ public class CustomerService {
 
         Customer savedCustomer = customerRepository.save(customer);
 
-        CustomerResponse customerResponse = new CustomerResponse();
-
-        customerResponse.setId(savedCustomer.getId());
-        customerResponse.setName(savedCustomer.getName());
-        customerResponse.setEmail(savedCustomer.getEmail());
-
-        return  customerResponse;
+        return mapToCustomerResponse(savedCustomer);
     }
 }
