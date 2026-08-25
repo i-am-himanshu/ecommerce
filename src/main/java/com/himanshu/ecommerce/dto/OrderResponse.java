@@ -11,7 +11,7 @@ public class OrderResponse {
 
     private OrderStatus orderStatus;
 
-    private Long customer_id;
+    private Long customerId;
 
     public OrderResponse() {
     }
@@ -40,11 +40,11 @@ public class OrderResponse {
         this.orderStatus = orderStatus;
     }
 
-    public Long getCustomer_id() {
-        return customer_id;
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(Long customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 }
