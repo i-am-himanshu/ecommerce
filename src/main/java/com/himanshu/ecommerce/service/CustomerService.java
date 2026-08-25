@@ -26,9 +26,9 @@ public class CustomerService {
 
         CustomerResponse customerResponse = new CustomerResponse();
 
-        customerResponse.setId(customerResponse.getId());
-        customerResponse.setName(customerResponse.getName());
-        customerResponse.setEmail(customerResponse.getEmail());
+        customerResponse.setId(savedCustomer.getId());
+        customerResponse.setName(savedCustomer.getName());
+        customerResponse.setEmail(savedCustomer.getEmail());
 
         return  customerResponse;
     }
