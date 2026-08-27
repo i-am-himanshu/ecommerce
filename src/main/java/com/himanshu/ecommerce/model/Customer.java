@@ -2,6 +2,7 @@ package com.himanshu.ecommerce.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,7 +18,7 @@ public class Customer {
     private String email;
 
     @OneToMany(mappedBy = "customer")
-    private List<Order> orders;
+    private List<Order> orders = new ArrayList<>();
 
     public Customer() {
     }
