@@ -1,5 +1,7 @@
 package com.himanshu.ecommerce.dto;
 
+import java.util.List;
+
 public class CustomerResponse {
 
     private Long id;
@@ -7,6 +9,8 @@ public class CustomerResponse {
     private String name;
 
     private String email;
+
+    private List<OrderSummaryResponse> orders;
 
     public CustomerResponse() {
     }
@@ -33,5 +37,13 @@ public class CustomerResponse {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<OrderSummaryResponse> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<OrderSummaryResponse> orders) {
+        this.orders = orders;
     }
 }
