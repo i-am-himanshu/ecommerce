@@ -1,7 +1,5 @@
-package com.himanshu.ecommerce.dto;
+package com.himanshu.ecommerce.model;
 
-import com.himanshu.ecommerce.model.Order;
-import com.himanshu.ecommerce.model.Product;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
