@@ -1,6 +1,7 @@
 package com.himanshu.ecommerce.controller;
 
 import com.himanshu.ecommerce.dto.OrderItemRequest;
+import com.himanshu.ecommerce.dto.OrderItemResponse;
 import com.himanshu.ecommerce.model.OrderItem;
 import com.himanshu.ecommerce.service.OrderItemService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class OrderItemController {
     }
 
     @PostMapping
-    public OrderItem createOrderItem(@RequestBody OrderItemRequest orderItemRequest) {
+    public OrderItemResponse createOrderItem(@RequestBody OrderItemRequest orderItemRequest) {
         return orderItemService.createOrderItem(orderItemRequest);
     }
 }

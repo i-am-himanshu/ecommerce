@@ -1,6 +1,7 @@
 package com.himanshu.ecommerce.service;
 
 import com.himanshu.ecommerce.dto.OrderItemRequest;
+import com.himanshu.ecommerce.dto.OrderItemResponse;
 import com.himanshu.ecommerce.model.Order;
 import com.himanshu.ecommerce.model.OrderItem;
 import com.himanshu.ecommerce.model.Product;
@@ -22,7 +23,19 @@ public class OrderItemService {
         this.orderRepository = orderRepository;
     }
 
-    public OrderItem createOrderItem(OrderItemRequest orderItemRequest) {
+    private OrderItemResponse mapToOrderItemResponse(OrderItem orderItem) {
+        OrderItemResponse orderItemResponse = new OrderItemResponse();
+
+        orderItemResponse.setId(orderItem.getId());
+        orderItemResponse.setOrderId(orderItem.getOrder().getId());
+        orderItemResponse.setPrice(orderItem.getPrice());
+        orderItemResponse.setProductId(orderItem.getProduct().getId());
+        orderItemResponse.setQuantity(orderItem.getQuantity());
+
+        return orderItemResponse;
+    }
+
+    public OrderItemResponse createOrderItem(OrderItemRequest orderItemRequest) {
         Order order = orderRepository.findById(orderItemRequest.getOrderId())
                 .orElseThrow(() -> new RuntimeException("Order not found."));
 
@@ -36,6 +49,8 @@ public class OrderItemService {
         orderItem.setProduct(product);
         orderItem.setQuantity(orderItemRequest.getQuantity());
 
-        return orderItemRepository.save(orderItem);
+        OrderItem savedOrderItem = orderItemRepository.save(orderItem);
+
+        return mapToOrderItemResponse(savedOrderItem);
     }
 }
